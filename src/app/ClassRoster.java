@@ -68,7 +68,7 @@ public class  ClassRoster extends Roster {
         ArrayList<String> s = new ArrayList<>();
         s = shuffleNames();
         for(int i = 0; i<result.length;i++){
-          for(int j = 0; j<result[i].length;j++){
+          for(int j = 0; j<result[0].length;j++){
             result[i][j]=s.get(a);
             a+=1;
           }
