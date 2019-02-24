@@ -70,6 +70,9 @@ public class  ClassRoster extends Roster {
         for(int i = 0; i<result.length;i++){
           for(int j = 0; j<result[0].length;j++){
             result[i][j]=s.get(a);
+            if(a==s.size()){
+              break;
+            }
             a+=1;
           }
         }
