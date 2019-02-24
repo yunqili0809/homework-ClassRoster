@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class  ClassRoster extends Roster {
     private int maxSize;
@@ -52,32 +53,34 @@ public class  ClassRoster extends Roster {
     
     }
     public String[][] randomGroups(int groupCount){
-      String [][] result;
-      int a = 0;
-      if(groupCount<2||groupCount>=this.getNames().size()){
-        System.out.println("Your request doesn't make sense.");
-        result = new String [1][1];
+      String[][] result;
+      int a=0;
+      if(groupCount < 2 || groupCount >= this.getNames().size()){
+          System.out.println("Your requst doesnot make sense.");
+          result = new String[1][1];
       }
       else{
-        if((this.getNames().size())%groupCount==0){
-            result = new String [groupCount][this.getNames().size()/groupCount];
-        }
-        else{
-          result = new String [groupCount][(this.getNames().size()/groupCount)+1];
-        }
-        ArrayList<String> s = new ArrayList<>();
-        s = shuffleNames();
-        for(int i = 0; i<result.length;i++){
-          for(int j = 0; j<result[0].length;j++){
-            result[i][j]=s.get(a);
-            if(a==s.size()){
-              break;
-            }
-            a+=1;
+          if(this.getNames().size() % groupCount == 0){ 
+              result = new String[groupCount][(this.getNames().size() / groupCount)];
           }
-        }
-      }
-      return result;
+          else{
+              result = new String[groupCount][(this.getNames().size() / groupCount) + 1];
+          }
+      
+          ArrayList<String> x = this.getNames();
+          Collections.shuffle(x);
 
-    }
+          for(int i = 0; i< groupCount; i++){
+              for(int j = 0; j < result[0].length; j++){
+                  result[i][j] = x.get(a);
+                  a++;
+                  if(a == x.size()){
+                  break;}
+              }
+          }
+  }
+
+      return result;
+  }
+
 }
